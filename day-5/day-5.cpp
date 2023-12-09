@@ -46,7 +46,7 @@ bool in_range(long v, range_t r) {
   return v >= r.src && v < r.src + r.len;
 }
 
-long map_seed_value(long seed, vector<vector<range_t>> maps) {
+long map_seed_value_back(long seed, vector<vector<range_t>> maps) {
   long current = seed;
 
   for (auto section_it = maps.begin(); section_it != maps.end(); ++section_it) {
@@ -90,7 +90,7 @@ int main() {
   long min = -1;
   for (auto it = seeds.begin(); it != seeds.end(); ++it) {
     long seed = *it;
-    long v = map_seed_value(*it, map_sections);
+    long v = map_seed_value_back(*it, map_sections);
     cout << seed << "->" << v << endl;
     if (v < min || min == -1) {
       min = v;
