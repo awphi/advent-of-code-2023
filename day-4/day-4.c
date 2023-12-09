@@ -20,20 +20,6 @@ char* read_file(char* path) {
   return string;
 }
 
-char* substr(int so, int eo, char* input) {
-  int len = eo - so;
-  if (len <= 0) {
-    return NULL;
-  }
-
-  char* result = malloc(sizeof(char) * (len + 1));
-  for (int i = 0; i < len; i++) {
-    result[i] = input[so + i];
-  }
-  result[len] = 0;
-  return result;
-}
-
 long score_card(char* card) {
   char* pipe_ptr;
   char* space_ptr;
