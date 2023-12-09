@@ -5,10 +5,6 @@
 #define CHAR_NEWLINE 10
 #define CHAR_0 48
 #define CHAR_9 57
-#define CHAR_SPACE 32
-
-char* number_strings[10] = {"zero", "one", "two",   "three", "four",
-                            "five", "six", "seven", "eight", "nine"};
 
 char* read_file(char* path) {
   FILE* f = fopen(path, "r");
@@ -22,36 +18,8 @@ char* read_file(char* path) {
   return string;
 }
 
-void replace_string_numbers(char* content, char replacement) {
-  size_t content_len = strlen(content);
-  for (int i = 0; i < 10; i++) {
-    char* num_string = number_strings[i];
-    size_t len = strlen(num_string);
-    char buf[len + 1];
-
-    for (int j = 0; j < content_len - len + 1; j++) {
-      // copy the next len chars of content into our buffer for comparison
-      for (int k = 0; k < len; k++) {
-        buf[k] = content[j + k];
-      }
-      buf[len] = 0;
-
-      // printf("%d, %lu, %s, %s\n", i, len, buf, num_string);
-      if (!strcmp(buf, num_string)) {
-        // replace the second character in the content with the respective char
-        // this abuses the fact that no two pairs of number strings have a
-        // common prefix-suffix or suffix-prefix of length > 1 and that all
-        // number strings are of length >= 3
-        content[j + 1] = CHAR_0 + i;
-      }
-    }
-  }
-}
-
 int main() {
   char* content = read_file("./day-1-input.txt");
-  // part 2 only:
-  replace_string_numbers(content, CHAR_SPACE);
   printf("%s\n", content);
   char buf[2];
   memset(buf, 0, sizeof(buf));
