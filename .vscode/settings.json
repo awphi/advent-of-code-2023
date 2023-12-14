@@ -48,6 +48,11 @@
     "cinttypes": "cpp",
     "typeinfo": "cpp",
     "sstream": "cpp",
-    "hash_map": "cpp"
+    "hash_map": "cpp",
+    "bitset": "cpp",
+    "cstring": "cpp",
+    "ctime": "cpp",
+    "map": "cpp",
+    "regex": "cpp"
   }
 }
